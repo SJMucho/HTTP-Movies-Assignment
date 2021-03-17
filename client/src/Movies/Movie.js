@@ -14,8 +14,15 @@ function Movie({ addToSavedList }) {
       .catch((err) => console.log(err.response));
   };
 
-  const saveMovie = () => {
-    addToSavedList(movie);
+  const saveMovie = (ev) => {
+    // addToSavedList(movie);
+    ev.preventDefault();
+    alert(`Saving movie ${movie.id}`);
+  };
+
+  const deleteMovie = (ev) => {
+    ev.preventDefault();
+    alert(`Deleting movie ${movie.id}`);
   };
 
   useEffect(() => {
@@ -30,9 +37,12 @@ function Movie({ addToSavedList }) {
     <div className="save-wrapper">
       <MovieCard movie={movie} />
 
-      <div className="save-button" onClick={saveMovie}>
+      <button className="save-button" onClick={saveMovie}>
         Save
-      </div>
+      </button>
+      <button className="delete-button" onClick={deleteMovie}>
+        Delete
+      </button>
     </div>
   );
 }
